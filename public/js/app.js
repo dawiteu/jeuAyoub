@@ -68,8 +68,12 @@ document.body.addEventListener(`keyup`,(event) => {
             let nouveauObj = rangee[nouveauPos]; // ici on aura la rangee suivante (donc apres a c'est B) 
             
             // console.log(nouveauObj);
+            let nouveauIDobjet = '#'+nouveauObj+"-"+divParams[1]; // ici construit le nom du div
+              //console.log(nouveauIDobjet); 
 
-            
+            document.querySelector(nouveauIDobjet).classList.add('image-jojo'); 
+            divImg.classList.remove('image-jojo');
+
         }
     });
 
