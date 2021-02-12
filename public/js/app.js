@@ -53,27 +53,23 @@ document.body.addEventListener(`keyup`,(event) =>{
 document.body.addEventListener(`keyup`,(event) => {
   if (event.keyCode === 40) {
     let divImg = document.querySelector(`.image-jojo`)
-              let divId = divImg.getAttribute(`id`).substring(0,1); 
-
+              //let divId = divImg.getAttribute(`id`).substring(0,1); 
     let divParams = divImg.getAttribute('id').split('-'); // 
-
     //console.log(divParams[0], divParams[1]);  // <-- le param 0 c'est le "a" et le 1 c'est la position (ex 1)
-
-    let suivant;
-
+              //let suivant;
     rangee.forEach(element => {
         if (element == divParams[0]) {
             let TabElementPos = rangee.indexOf(element); // place dans le tableau;
-            let nouveauPos = TabElementPos+1; // puis tu fais 
-            let nouveauObj = rangee[nouveauPos]; // ici on aura la rangee suivante (donc apres a c'est B) 
-            
-            // console.log(nouveauObj);
-            let nouveauIDobjet = '#'+nouveauObj+"-"+divParams[1]; // ici construit le nom du div
-              //console.log(nouveauIDobjet); 
-
-            document.querySelector(nouveauIDobjet).classList.add('image-jojo'); 
-            divImg.classList.remove('image-jojo');
-
+            let nouveauPos;
+            if(rangee.indexOf(element) < rangee.length-1){
+              nouveauPos = TabElementPos+1;
+              let nouveauObj = rangee[nouveauPos]; // ici on aura la rangee suivante (donc apres a c'est B) 
+              let nouveauIDobjet = '#'+nouveauObj+"-"+divParams[1]; // ici construit le nom du div
+              document.querySelector(nouveauIDobjet).classList.add('image-jojo'); 
+              divImg.classList.remove('image-jojo');
+            }else{
+              nouveauPos = TabElementPos;
+            }
         }
     });
 
@@ -82,3 +78,4 @@ document.body.addEventListener(`keyup`,(event) => {
 })
 
 // PARTIR VERS LE HAUT
+
