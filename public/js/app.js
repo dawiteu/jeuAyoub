@@ -43,19 +43,34 @@ document.body.addEventListener(`keyup`,(event) =>{
 })
 
 // PARTIR VERS LE BAS
+/*  // dawiteu 
+  On doit modifier un peu psq on doit prendre en compte ET 
+  > la rangée (donc soit a, soit b, etc )
+  > la position (pour le replacer au bon endroit )
+  du coup une petite idée de split me passe par la tête... :> 
+
+*/ 
 document.body.addEventListener(`keyup`,(event) => {
   if (event.keyCode === 40) {
     let divImg = document.querySelector(`.image-jojo`)
-    let divId = divImg.getAttribute(`id`).substring(0,1)
-    console.log(divId);
+              let divId = divImg.getAttribute(`id`).substring(0,1); 
+
+    let divParams = divImg.getAttribute('id').split('-'); // 
+
+    //console.log(divParams[0], divParams[1]);  // <-- le param 0 c'est le "a" et le 1 c'est la position (ex 1)
+
     let suivant;
-    rangee.forEach( element => {
-      if (element == divId) {
-        if (rangee.indexOf(element) < rangee.length-1) {
-          suivant = rangee[element];
-          console.log(suivant);
+
+    rangee.forEach(element => {
+        if (element == divParams[0]) {
+            let TabElementPos = rangee.indexOf(element); // place dans le tableau;
+            let nouveauPos = TabElementPos+1; // puis tu fais 
+            let nouveauObj = rangee[nouveauPos]; // ici on aura la rangee suivante (donc apres a c'est B) 
+            
+            // console.log(nouveauObj);
+
+            
         }
-      }
     });
 
   
