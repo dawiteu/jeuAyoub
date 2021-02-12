@@ -79,3 +79,28 @@ document.body.addEventListener(`keyup`,(event) => {
 
 // PARTIR VERS LE HAUT
 
+document.body.addEventListener(`keyup`,(event) => {
+  if (event.keyCode === 38) {
+
+    let divImg = document.querySelector(`.image-jojo`)
+    let divParams = divImg.getAttribute('id').split('-'); //
+
+    rangee.forEach(element => {
+        if (element == divParams[0]) {
+            let TabElementPos = rangee.indexOf(element); // place dans le tableau;
+            let nouveauPos;
+            if(rangee.indexOf(element) > 0){
+              nouveauPos = TabElementPos-1;
+              let nouveauObj = rangee[nouveauPos]; // ici on aura la rangee suivante (donc apres a c'est B)        
+              let nouveauIDobjet = '#'+nouveauObj+"-"+divParams[1]; // ici construit le nom du div     
+              document.querySelector(nouveauIDobjet).classList.add('image-jojo'); 
+              divImg.classList.remove('image-jojo');
+            }else{
+              nouveauPos = TabElementPos;
+            }
+        }
+    });
+
+  
+  }
+})
